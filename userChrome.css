@@ -1,0 +1,136 @@
+/* Auto-hide toolbars when not hovered or focused */
+
+:root {
+  --toolbar-height: 40px; /* Adjust this value if your toolbars are taller/shorter */
+}
+
+/* Default state: toolbars faded out, content shifted up */
+#navigator-toolbox {
+  opacity: 0 !important;
+  transition: opacity 0.3s ease-out !important;
+}
+
+/* Hide address bar and navigation elements by default */
+#nav-bar,
+#urlbar-container,
+#urlbar,
+#search-container {
+  opacity: 0 !important;
+  transition: opacity 0.3s ease-out !important;
+}
+
+/* Extend browser content to fill the space when toolbars are hidden */
+#browser {
+  transform: translateY(calc(-1 * var(--toolbar-height))) !important;
+  transition: transform 0.3s ease-out !important;
+  min-height: 100vh !important;
+  height: 100vh !important;
+}
+
+/* Extend tab bar container to fill the space */
+#tabbrowser-tabs {
+  min-height: 100% !important;
+  height: 100% !important;
+  transition: height 0.3s ease-out !important;
+}
+
+/* Fullscreen mode: disable transforms to prevent content cutoff */
+#main-window[inFullscreen] #navigator-toolbox {
+  opacity: 1 !important;
+}
+
+#main-window[inFullscreen] #browser {
+  transform: none !important;
+  min-height: 100vh !important;
+  height: 100vh !important;
+}
+
+#main-window[inFullscreen] #tabbrowser-tabs {
+  min-height: 100% !important;
+  height: 100% !important;
+}
+
+#main-window[inFullscreen] #nav-bar,
+#main-window[inFullscreen] #urlbar-container,
+#main-window[inFullscreen] #urlbar,
+#main-window[inFullscreen] #search-container {
+  opacity: 1 !important;
+}
+
+/* Show toolbars when hovering over the toolbar area */
+#navigator-toolbox:hover,
+#navigator-toolbox:focus-within {
+  opacity: 1 !important;
+}
+
+/* Show address bar and navigation elements on hover/focus */
+#navigator-toolbox:hover #nav-bar,
+#navigator-toolbox:hover #urlbar-container,
+#navigator-toolbox:hover #urlbar,
+#navigator-toolbox:hover #search-container,
+#navigator-toolbox:focus-within #nav-bar,
+#navigator-toolbox:focus-within #urlbar-container,
+#navigator-toolbox:focus-within #urlbar,
+#navigator-toolbox:focus-within #search-container {
+  opacity: 1 !important;
+}
+
+#navigator-toolbox:hover ~ #browser,
+#navigator-toolbox:focus-within ~ #browser {
+  transform: translateY(0px) !important;
+  min-height: 100vh !important;
+  height: 100vh !important;
+}
+
+#navigator-toolbox:hover ~ #browser #tabbrowser-tabs,
+#navigator-toolbox:focus-within ~ #browser #tabbrowser-tabs {
+  min-height: 100% !important;
+  height: 100% !important;
+}
+
+/* Show toolbars when URL bar is focused (F6 or Ctrl+L) */
+#urlbar:focus ~ #navigator-toolbox,
+#urlbar:focus ~ #nav-bar,
+#urlbar:focus ~ #urlbar-container,
+#urlbar:focus ~ #search-container {
+  opacity: 1 !important;
+}
+
+/* Make URL bar itself visible when focused */
+#urlbar:focus {
+  opacity: 1 !important;
+}
+
+#urlbar:focus ~ #browser {
+  transform: translateY(0px) !important;
+  min-height: 100vh !important;
+  height: 100vh !important;
+}
+
+#urlbar:focus ~ #browser #tabbrowser-tabs {
+  min-height: 100% !important;
+  height: 100% !important;
+}
+
+/* Optional: If you use the bookmarks toolbar and want it to also hide/show */
+#PersonalToolbar {
+  visibility: collapse !important;
+  transition: visibility 0.3s ease-out !important;
+  height: 0 !important;
+}
+
+#navigator-toolbox:hover #PersonalToolbar,
+#navigator-toolbox:focus-within #PersonalToolbar {
+  visibility: visible !important;
+  height: auto !important;
+}
+
+#main-window[inFullscreen] #PersonalToolbar {
+  visibility: visible !important;
+  height: auto !important;
+}
+
+#urlbar:focus ~ #PersonalToolbar {
+  visibility: visible !important;
+  height: auto !important;
+}
