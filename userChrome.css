@@ -14,9 +14,8 @@
   border: none !important;
 }
 
-/* Target the URL bar input field specifically */
+/* Target the URL bar input field specifically - remove border radius to prevent cursor clipping */
 #urlbar-input {
-  border-radius: 20px !important;
   border: none !important;
 }
 
@@ -185,4 +184,34 @@
 /* Hide the New Tab button in Vertical Tabs */
 #tabs-newtab-button {
   display: none !important;
+}
+
+/* Make search engine dropdown rounded */
+#urlbar-search-engine-dropdown,
+#urlbar-search-engine-dropdown .urlbarView {
+  border-radius: 20px !important;
+  border: none !important;
+}
+
+/* Target the search engine button and its dropdown */
+#urlbar-go-button,
+#urlbar-go-button-dropdown,
+.urlbar-page-action {
+  border-radius: 20px !important;
+  border: none !important;
+}
+
+/* Target the search engine dropdown button specifically */
+#urlbar-searchmode-switcher {
+  border-radius: 20px !important;
+  border: none !important;
+  min-width: 50px !important; /* Make it wider */
+  padding-right: 8px !important; /* Add right padding to fix cursor clipping */
+}
+
+/* Target the search suggestions dropdown */
+.urlbarView-results,
+.urlbarView-body-outer {
+  border-radius: 20px !important;
+  border: none !important;
 }
