@@ -180,3 +180,9 @@
   width: var(--tab-icon-size) !important; /* Adjust as desired */
   height: var(--tab-icon-size) !important; /* Adjust as desired */
 }
+
+
+/* Hide the New Tab button in Vertical Tabs */
+#tabs-newtab-button {
+  display: none !important;
+}
