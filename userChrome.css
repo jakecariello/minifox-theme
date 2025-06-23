@@ -2,6 +2,38 @@
 
 :root {
   --toolbar-height: 40px; /* Adjust this value if your toolbars are taller/shorter */
+  --tab-icon-size: 20px; /* Adjust this value to change tab icon size */
+}
+
+/* Make address bar rounded */
+#urlbar,
+#urlbar-container,
+#urlbar-background,
+.urlbar-input-box {
+  border-radius: 20px !important;
+  border: none !important;
+}
+
+/* Target the URL bar input field specifically */
+#urlbar-input {
+  border-radius: 20px !important;
+  border: none !important;
+}
+
+/* Target the URL bar when focused */
+#urlbar:focus,
+#urlbar:focus #urlbar-background,
+#urlbar:focus .urlbar-input-box {
+  border-radius: 20px !important;
+  border: none !important;
+}
+
+/* Target the URL bar when hovered */
+#urlbar:hover,
+#urlbar:hover #urlbar-background,
+#urlbar:hover .urlbar-input-box {
+  border-radius: 20px !important;
+  border: none !important;
 }
 
 /* Default state: toolbars faded out, content shifted up */
@@ -133,4 +165,18 @@
 #urlbar:focus ~ #PersonalToolbar {
   visibility: visible !important;
   height: auto !important;
+}
+
+/* Tab icon sizing not pinned*/
+.tabbrowser-tab:not([pinned]) .tab-icon-image {
+  width: var(--tab-icon-size) !important; /* Adjust as desired */
+  height: var(--tab-icon-size) !important; /* Adjust as desired */
+  /* shift to the left */
+  margin-left: calc(-1 * var(--tab-icon-size) / 10) !important;
+}
+
+/* Pinned tab icon sizing */
+.tabbrowser-tab[pinned] .tab-icon-image {
+  width: var(--tab-icon-size) !important; /* Adjust as desired */
+  height: var(--tab-icon-size) !important; /* Adjust as desired */
 }
