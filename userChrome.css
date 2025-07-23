@@ -215,9 +215,72 @@
   padding-right: 8px !important; /* Add right padding to fix cursor clipping */
 }
 
+/* Target the search mode switcher chicklet (appears when in search mode) */
+#searchmode-switcher-chicklet {
+  border-radius: var(--border-radius) !important; /* Restore full border radius */
+  border: none !important;
+  margin-right: 12 !important; /* Remove any right margin */
+  padding-left: 57px !important; /* Reduce left padding to prevent overflow */
+  margin-left: -50px !important; /* Adjust negative margin to match */
+  position: relative !important;
+  z-index: 1 !important; /* Ensure it appears behind the input field */
+}
+
+/* When in search mode, make the URL bar input field connect to the chicklet */
+#urlbar[searchmode] .urlbar-input-box {
+  border-radius: var(--border-radius) !important; /* Restore full border radius */
+  border: none !important;
+  margin-left: 0 !important; /* Remove any left margin */
+  position: relative !important;
+  z-index: 2 !important; /* Ensure it appears on top of the chicklet */
+}
+
+/* Also target the URL bar background when in search mode to ensure proper connection */
+#urlbar[searchmode] #urlbar-background {
+  border-radius: var(--border-radius) !important; /* Restore full border radius */
+  border: none !important;
+  position: relative !important;
+  z-index: 2 !important; /* Ensure it appears on top */
+}
+
+/* Ensure the URL bar itself has proper border radius when in search mode */
+#urlbar[searchmode] {
+  border-radius: var(--border-radius) !important; /* Restore full border radius */
+  border: none !important;
+  position: relative !important;
+  z-index: 2 !important; /* Ensure it appears on top */
+}
+
+/* Target the search mode switcher popup */
+#searchmode-switcher-popup {
+  border-radius: var(--border-radius) !important;
+  border: none !important;
+}
+
+/* Target the search mode switcher close button */
+#searchmode-switcher-close {
+  border-radius: var(--border-radius) !important;
+  border: none !important;
+}
+
 /* Target the search suggestions dropdown */
 .urlbarView-results,
 .urlbarView-body-outer {
   border-radius: var(--border-radius) !important;
   border: none !important;
+}
+
+/* For site search dropdowns, remove right border radius to align with URL bar */
+.urlbarView[type="search"] .urlbarView-results,
+.urlbarView[type="search"] .urlbarView-body-outer,
+.urlbarView .urlbarView-results,
+.urlbarView .urlbarView-body-outer {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+/* Also target the main URL bar view container */
+.urlbarView {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
