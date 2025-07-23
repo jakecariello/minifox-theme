@@ -284,3 +284,9 @@
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
 }
+
+/* Fix sidebar card top margin issues */
+/* Simple approach: add top padding to the sidebar container */
+#sidebar-box {
+  padding-top: var(--space-small) !important;
+}
