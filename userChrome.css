@@ -3,6 +3,7 @@
 :root {
   --toolbar-height: 40px; /* Adjust this value if your toolbars are taller/shorter */
   --tab-icon-size: 20px; /* Adjust this value to change tab icon size */
+  --border-radius: 10px; /* Global border radius for UI elements */
 }
 
 /* Make address bar rounded */
@@ -10,7 +11,7 @@
 #urlbar-container,
 #urlbar-background,
 .urlbar-input-box {
-  border-radius: 20px !important;
+  border-radius: var(--border-radius) !important;
   border: none !important;
 }
 
@@ -23,7 +24,7 @@
 #urlbar:focus,
 #urlbar:focus #urlbar-background,
 #urlbar:focus .urlbar-input-box {
-  border-radius: 20px !important;
+  border-radius: var(--border-radius) !important;
   border: none !important;
 }
 
@@ -31,7 +32,7 @@
 #urlbar:hover,
 #urlbar:hover #urlbar-background,
 #urlbar:hover .urlbar-input-box {
-  border-radius: 20px !important;
+  /* border-radius: var(--border-radius) !important; */
   border: none !important;
 }
 
@@ -51,11 +52,17 @@
 }
 
 /* Extend browser content to fill the space when toolbars are hidden */
-#browser {
+/* Only apply to main browser window, not PiP windows */
+#main-window #browser {
   transform: translateY(calc(-1 * var(--toolbar-height))) !important;
   transition: transform 0.3s ease-out !important;
   min-height: 100vh !important;
   height: 100vh !important;
+}
+
+/* Prevent PiP windows from being affected by the browser transform */
+#pictureInPictureWindow #browser {
+  transform: none !important;
 }
 
 /* Extend tab bar container to fill the space */
@@ -180,7 +187,6 @@
   height: var(--tab-icon-size) !important; /* Adjust as desired */
 }
 
-
 /* Hide the New Tab button in Vertical Tabs */
 #tabs-newtab-button {
   display: none !important;
@@ -189,7 +195,7 @@
 /* Make search engine dropdown rounded */
 #urlbar-search-engine-dropdown,
 #urlbar-search-engine-dropdown .urlbarView {
-  border-radius: 20px !important;
+  border-radius: var(--border-radius) !important;
   border: none !important;
 }
 
@@ -197,13 +203,13 @@
 #urlbar-go-button,
 #urlbar-go-button-dropdown,
 .urlbar-page-action {
-  border-radius: 20px !important;
+  border-radius: var(--border-radius) !important;
   border: none !important;
 }
 
 /* Target the search engine dropdown button specifically */
 #urlbar-searchmode-switcher {
-  border-radius: 20px !important;
+  border-radius: var(--border-radius) !important;
   border: none !important;
   min-width: 50px !important; /* Make it wider */
   padding-right: 8px !important; /* Add right padding to fix cursor clipping */
@@ -212,6 +218,6 @@
 /* Target the search suggestions dropdown */
 .urlbarView-results,
 .urlbarView-body-outer {
-  border-radius: 20px !important;
+  border-radius: var(--border-radius) !important;
   border: none !important;
 }
