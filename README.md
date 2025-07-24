@@ -1,4 +1,4 @@
-# Minimal Auto-Hide Firefox Theme
+# Minifox Theme
 
 A clean, distraction-free Firefox theme that automatically hides toolbars when not in use, featuring rounded UI elements and smooth animations.
 
