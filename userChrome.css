@@ -292,6 +292,11 @@
   animation: fadeIn 0.5s ease-in !important;
 }
 
+/* Add drop shadow to the sidebar browser element with rounded corners */
+#sidebar {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
