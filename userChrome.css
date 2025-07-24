@@ -51,6 +51,12 @@
   transition: opacity 0.3s ease-out !important;
 }
 
+/* Add a touch of top margin to the URL bar */
+#urlbar-container {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+}
+
 /* Extend browser content to fill the space when toolbars are hidden */
 /* Only apply to main browser window, not PiP windows */
 #main-window #browser {
@@ -93,6 +99,12 @@
 #main-window[inFullscreen] #urlbar,
 #main-window[inFullscreen] #search-container {
   opacity: 1 !important;
+}
+
+/* Ensure sidebar maintains proper spacing in fullscreen */
+#main-window[inFullscreen] #sidebar-box > * {
+  margin-top: calc(var(--space-small) * 0.6) !important;
+  margin-bottom: calc(var(--space-small) * 0.6) !important;
 }
 
 /* Show toolbars when hovering over the toolbar area */
@@ -224,6 +236,12 @@
   margin-left: -50px !important; /* Adjust negative margin to match */
   position: relative !important;
   z-index: 1 !important; /* Ensure it appears behind the input field */
+  background-color: var(--urlbar-box-bgcolor) !important;
+}
+
+/* When URL bar is focused, update chicklet background */
+#urlbar[focused] #searchmode-switcher-chicklet {
+  background-color: var(--urlbar-box-focus-bgcolor) !important;
 }
 
 /* When in search mode, make the URL bar input field connect to the chicklet */
@@ -241,6 +259,8 @@
   border: none !important;
   position: relative !important;
   z-index: 2 !important; /* Ensure it appears on top */
+  background-color: var(--toolbar-field-background-color) !important;
+  background-image: var(--toolbar-field-background-image) !important;
 }
 
 /* Ensure the URL bar itself has proper border radius when in search mode */
@@ -249,6 +269,8 @@
   border: none !important;
   position: relative !important;
   z-index: 2 !important; /* Ensure it appears on top */
+  background-color: var(--toolbar-field-background-color) !important;
+  background-image: var(--toolbar-field-background-image) !important;
 }
 
 /* Target the search mode switcher popup */
@@ -268,6 +290,8 @@
 .urlbarView-body-outer {
   border-radius: var(--border-radius) !important;
   border: none !important;
+  background-color: white !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
 }
 
 /* For site search dropdowns, remove right border radius to align with URL bar */
@@ -283,15 +307,21 @@
 .urlbarView {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
+  background-color: white !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
 }
 
 /* Fix sidebar card top margin issues */
-/* Simple approach: add top padding to the sidebar container */
+/* Use padding with different values for different modes */
 #sidebar-box {
-  padding-top: var(--space-small) !important;
+  padding-top: calc(var(--space-small) * 0.3) !important;
   padding-right: 10px !important;
   padding-left: 4px !important;
   animation: fadeIn 0.5s ease-in !important;
+}
+
+#sidebar-box > * {
+  margin-bottom: calc(var(--space-small) * 0.6) !important;
 }
 
 /* Add drop shadow to the sidebar browser element with rounded corners */
