@@ -4,6 +4,7 @@
   --toolbar-height: 40px; /* Adjust this value if your toolbars are taller/shorter */
   --tab-icon-size: 20px; /* Adjust this value to change tab icon size */
   --border-radius: 10px; /* Global border radius for UI elements */
+  --search-bg-color: light-dark(white, #1a1a1a); /* Consistent background for search elements */
 }
 
 /* Make address bar rounded */
@@ -49,6 +50,8 @@
 #search-container {
   opacity: 0 !important;
   transition: opacity 0.3s ease-out !important;
+  padding: 2px 2px !important
+
 }
 
 /* Add a touch of top margin to the URL bar */
@@ -229,7 +232,7 @@
 
 /* Target the search mode switcher chicklet (appears when in search mode) */
 #searchmode-switcher-chicklet {
-  border-radius: var(--border-radius) !important; /* Restore full border radius */
+  border-radius: var(--border-radius) !important;
   border: none !important;
   margin-right: 12 !important; /* Remove any right margin */
   padding-left: 57px !important; /* Reduce left padding to prevent overflow */
@@ -246,7 +249,7 @@
 
 /* When in search mode, make the URL bar input field connect to the chicklet */
 #urlbar[searchmode] .urlbar-input-box {
-  border-radius: var(--border-radius) !important; /* Restore full border radius */
+  border-radius: var(--border-radius) !important;
   border: none !important;
   margin-left: 0 !important; /* Remove any left margin */
   position: relative !important;
@@ -255,22 +258,20 @@
 
 /* Also target the URL bar background when in search mode to ensure proper connection */
 #urlbar[searchmode] #urlbar-background {
-  border-radius: var(--border-radius) !important; /* Restore full border radius */
+  border-radius: var(--border-radius) !important;
   border: none !important;
   position: relative !important;
   z-index: 2 !important; /* Ensure it appears on top */
-  background-color: var(--toolbar-field-background-color) !important;
-  background-image: var(--toolbar-field-background-image) !important;
+  background-color: var(--search-bg-color) !important;
 }
 
 /* Ensure the URL bar itself has proper border radius when in search mode */
 #urlbar[searchmode] {
-  border-radius: var(--border-radius) !important; /* Restore full border radius */
+  border-radius: var(--border-radius) !important;
   border: none !important;
   position: relative !important;
   z-index: 2 !important; /* Ensure it appears on top */
-  background-color: var(--toolbar-field-background-color) !important;
-  background-image: var(--toolbar-field-background-image) !important;
+  background-color: var(--search-bg-color) !important;
 }
 
 /* Target the search mode switcher popup */
@@ -286,12 +287,16 @@
 }
 
 /* Target the search suggestions dropdown */
-.urlbarView-results,
+
 .urlbarView-body-outer {
   border-radius: var(--border-radius) !important;
   border: none !important;
-  background-color: white !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  background-color: var(--search-bg-color) !important;
+  /* box-shadow: 0 2px 8px light-dark(rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.1)) !important; */
+}
+
+.urlbarView-results {
+  background-color: var(--search-bg-color) !important;
 }
 
 /* For site search dropdowns, remove right border radius to align with URL bar */
@@ -307,8 +312,7 @@
 .urlbarView {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
-  background-color: white !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  background-color: var(--search-bg-color) !important;
 }
 
 /* Fix sidebar card top margin issues */
