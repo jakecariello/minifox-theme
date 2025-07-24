@@ -289,6 +289,8 @@
 /* Simple approach: add top padding to the sidebar container */
 #sidebar-box {
   padding-top: var(--space-small) !important;
+  padding-right: 10px !important;
+  padding-left: 4px !important;
   animation: fadeIn 0.5s ease-in !important;
 }
 
