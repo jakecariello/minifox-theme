@@ -54,12 +54,6 @@
 
 }
 
-/* Add a touch of top margin to the URL bar */
-#urlbar-container {
-  margin-top: 2px !important;
-  margin-bottom: 2px !important;
-}
-
 /* Extend browser content to fill the space when toolbars are hidden */
 /* Only apply to main browser window, not PiP windows */
 #main-window #browser {
@@ -105,10 +99,10 @@
 }
 
 /* Ensure sidebar maintains proper spacing in fullscreen */
-#main-window[inFullscreen] #sidebar-box > * {
+/* #main-window[inFullscreen] #sidebar-box > * {
   margin-top: calc(var(--space-small) * 0.6) !important;
   margin-bottom: calc(var(--space-small) * 0.6) !important;
-}
+} */
 
 /* Show toolbars when hovering over the toolbar area */
 #navigator-toolbox:hover,
@@ -318,7 +312,7 @@
 /* Fix sidebar card top margin issues */
 /* Use padding with different values for different modes */
 #sidebar-box {
-  padding-top: calc(var(--space-small) * 0.3) !important;
+  padding-top: var(--space-small) !important;
   padding-right: 10px !important;
   padding-left: 4px !important;
   animation: fadeIn 0.5s ease-in !important;
