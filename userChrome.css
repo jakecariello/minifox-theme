@@ -1,13 +1,14 @@
-/* Auto-hide toolbars when not hovered or focused */
-
+/* ===== GLOBAL VARIABLES ===== */
 :root {
-  --toolbar-height: 40px; /* Adjust this value if your toolbars are taller/shorter */
-  --tab-icon-size: 20px; /* Adjust this value to change tab icon size */
-  --border-radius: 10px; /* Global border radius for UI elements */
-  --search-bg-color: light-dark(white, #1a1a1a); /* Consistent background for search elements */
+  --toolbar-height: 40px;
+  --tab-icon-size: 20px;
+  --border-radius: 10px;
+  --search-bg-color: light-dark(white, #1a1a1a);
+  --sidebar-shadow: light-dark(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.06));
+  --sidebar-border: light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2));
 }
 
-/* Make address bar rounded */
+/* ===== URL BAR STYLING ===== */
 #urlbar,
 #urlbar-container,
 #urlbar-background,
@@ -16,12 +17,10 @@
   border: none !important;
 }
 
-/* Target the URL bar input field specifically - remove border radius to prevent cursor clipping */
 #urlbar-input {
   border: none !important;
 }
 
-/* Target the URL bar when focused */
 #urlbar:focus,
 #urlbar:focus #urlbar-background,
 #urlbar:focus .urlbar-input-box {
@@ -29,33 +28,118 @@
   border: none !important;
 }
 
-/* Target the URL bar when hovered */
 #urlbar:hover,
 #urlbar:hover #urlbar-background,
 #urlbar:hover .urlbar-input-box {
-  /* border-radius: var(--border-radius) !important; */
   border: none !important;
 }
 
-/* Default state: toolbars faded out, content shifted up */
+/* ===== SEARCH MODE STYLING ===== */
+#urlbar-search-engine-dropdown,
+#urlbar-search-engine-dropdown .urlbarView {
+  border-radius: var(--border-radius) !important;
+  border: none !important;
+}
+
+#urlbar-go-button,
+#urlbar-go-button-dropdown,
+.urlbar-page-action {
+  border-radius: var(--border-radius) !important;
+  border: none !important;
+}
+
+#urlbar-searchmode-switcher {
+  border-radius: var(--border-radius) !important;
+  border: none !important;
+  min-width: 50px !important;
+  padding-right: 8px !important;
+}
+
+#searchmode-switcher-chicklet {
+  border-radius: var(--border-radius) !important;
+  border: none !important;
+  margin-right: 12 !important;
+  padding-left: 57px !important;
+  margin-left: -50px !important;
+  position: relative !important;
+  z-index: 1 !important;
+  background-color: var(--urlbar-box-bgcolor) !important;
+}
+
+#urlbar[focused] #searchmode-switcher-chicklet {
+  background-color: var(--urlbar-box-focus-bgcolor) !important;
+}
+
+#urlbar[searchmode] .urlbar-input-box {
+  border-radius: var(--border-radius) !important;
+  border: none !important;
+  margin-left: 0 !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+#urlbar[searchmode] #urlbar-background {
+  border-radius: var(--border-radius) !important;
+  border: none !important;
+  position: relative !important;
+  z-index: 2 !important;
+  background-color: var(--search-bg-color) !important;
+}
+
+#urlbar[searchmode] {
+  border-radius: var(--border-radius) !important;
+  border: none !important;
+  position: relative !important;
+  z-index: 2 !important;
+  background-color: var(--search-bg-color) !important;
+}
+
+#searchmode-switcher-popup,
+#searchmode-switcher-close {
+  border-radius: var(--border-radius) !important;
+  border: none !important;
+}
+
+/* ===== SEARCH SUGGESTIONS ===== */
+.urlbarView-body-outer {
+  border-radius: var(--border-radius) !important;
+  border: none !important;
+  background-color: var(--search-bg-color) !important;
+}
+
+.urlbarView-results {
+  background-color: var(--search-bg-color) !important;
+}
+
+.urlbarView[type="search"] .urlbarView-results,
+.urlbarView[type="search"] .urlbarView-body-outer,
+.urlbarView .urlbarView-results,
+.urlbarView .urlbarView-body-outer {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.urlbarView {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  background-color: var(--search-bg-color) !important;
+}
+
+/* ===== AUTO-HIDE TOOLBARS ===== */
 #navigator-toolbox {
   opacity: 0 !important;
   transition: opacity 0.3s ease-out !important;
 }
 
-/* Hide address bar and navigation elements by default */
 #nav-bar,
 #urlbar-container,
 #urlbar,
 #search-container {
   opacity: 0 !important;
   transition: opacity 0.3s ease-out !important;
-  padding: 2px 2px !important
-
+  padding: 2px 2px !important;
 }
 
-/* Extend browser content to fill the space when toolbars are hidden */
-/* Only apply to main browser window, not PiP windows */
 #main-window #browser {
   transform: translateY(calc(-1 * var(--toolbar-height))) !important;
   transition: transform 0.3s ease-out !important;
@@ -63,54 +147,22 @@
   height: 100vh !important;
 }
 
-/* Prevent PiP windows from being affected by the browser transform */
 #pictureInPictureWindow #browser {
   transform: none !important;
 }
 
-/* Extend tab bar container to fill the space */
 #tabbrowser-tabs {
   min-height: 100% !important;
   height: 100% !important;
   transition: height 0.3s ease-out !important;
 }
 
-/* Fullscreen mode: disable transforms to prevent content cutoff */
-#main-window[inFullscreen] #navigator-toolbox {
-  opacity: 1 !important;
-}
-
-#main-window[inFullscreen] #browser {
-  transform: none !important;
-  min-height: 100vh !important;
-  height: 100vh !important;
-}
-
-#main-window[inFullscreen] #tabbrowser-tabs {
-  min-height: 100% !important;
-  height: 100% !important;
-}
-
-#main-window[inFullscreen] #nav-bar,
-#main-window[inFullscreen] #urlbar-container,
-#main-window[inFullscreen] #urlbar,
-#main-window[inFullscreen] #search-container {
-  opacity: 1 !important;
-}
-
-/* Ensure sidebar maintains proper spacing in fullscreen */
-/* #main-window[inFullscreen] #sidebar-box > * {
-  margin-top: calc(var(--space-small) * 0.6) !important;
-  margin-bottom: calc(var(--space-small) * 0.6) !important;
-} */
-
-/* Show toolbars when hovering over the toolbar area */
+/* ===== HOVER/FOCUS STATES ===== */
 #navigator-toolbox:hover,
 #navigator-toolbox:focus-within {
   opacity: 1 !important;
 }
 
-/* Show address bar and navigation elements on hover/focus */
 #navigator-toolbox:hover #nav-bar,
 #navigator-toolbox:hover #urlbar-container,
 #navigator-toolbox:hover #urlbar,
@@ -135,7 +187,6 @@
   height: 100% !important;
 }
 
-/* Show toolbars when URL bar is focused (F6 or Ctrl+L) */
 #urlbar:focus ~ #navigator-toolbox,
 #urlbar:focus ~ #nav-bar,
 #urlbar:focus ~ #urlbar-container,
@@ -143,7 +194,6 @@
   opacity: 1 !important;
 }
 
-/* Make URL bar itself visible when focused */
 #urlbar:focus {
   opacity: 1 !important;
 }
@@ -159,7 +209,30 @@
   height: 100% !important;
 }
 
-/* Optional: If you use the bookmarks toolbar and want it to also hide/show */
+/* ===== FULLSCREEN MODE ===== */
+#main-window[inFullscreen] #navigator-toolbox {
+  opacity: 1 !important;
+}
+
+#main-window[inFullscreen] #browser {
+  transform: none !important;
+  min-height: 100vh !important;
+  height: 100vh !important;
+}
+
+#main-window[inFullscreen] #tabbrowser-tabs {
+  min-height: 100% !important;
+  height: 100% !important;
+}
+
+#main-window[inFullscreen] #nav-bar,
+#main-window[inFullscreen] #urlbar-container,
+#main-window[inFullscreen] #urlbar,
+#main-window[inFullscreen] #search-container {
+  opacity: 1 !important;
+}
+
+/* ===== BOOKMARKS TOOLBAR ===== */
 #PersonalToolbar {
   visibility: collapse !important;
   transition: visibility 0.3s ease-out !important;
@@ -182,135 +255,23 @@
   height: auto !important;
 }
 
-/* Tab icon sizing not pinned*/
+/* ===== TAB STYLING ===== */
 .tabbrowser-tab:not([pinned]) .tab-icon-image {
-  width: var(--tab-icon-size) !important; /* Adjust as desired */
-  height: var(--tab-icon-size) !important; /* Adjust as desired */
-  /* shift to the left */
+  width: var(--tab-icon-size) !important;
+  height: var(--tab-icon-size) !important;
   margin-left: calc(-1 * var(--tab-icon-size) / 10) !important;
 }
 
-/* Pinned tab icon sizing */
 .tabbrowser-tab[pinned] .tab-icon-image {
-  width: var(--tab-icon-size) !important; /* Adjust as desired */
-  height: var(--tab-icon-size) !important; /* Adjust as desired */
+  width: var(--tab-icon-size) !important;
+  height: var(--tab-icon-size) !important;
 }
 
-/* Hide the New Tab button in Vertical Tabs */
 #tabs-newtab-button {
   display: none !important;
 }
 
-/* Make search engine dropdown rounded */
-#urlbar-search-engine-dropdown,
-#urlbar-search-engine-dropdown .urlbarView {
-  border-radius: var(--border-radius) !important;
-  border: none !important;
-}
-
-/* Target the search engine button and its dropdown */
-#urlbar-go-button,
-#urlbar-go-button-dropdown,
-.urlbar-page-action {
-  border-radius: var(--border-radius) !important;
-  border: none !important;
-}
-
-/* Target the search engine dropdown button specifically */
-#urlbar-searchmode-switcher {
-  border-radius: var(--border-radius) !important;
-  border: none !important;
-  min-width: 50px !important; /* Make it wider */
-  padding-right: 8px !important; /* Add right padding to fix cursor clipping */
-}
-
-/* Target the search mode switcher chicklet (appears when in search mode) */
-#searchmode-switcher-chicklet {
-  border-radius: var(--border-radius) !important;
-  border: none !important;
-  margin-right: 12 !important; /* Remove any right margin */
-  padding-left: 57px !important; /* Reduce left padding to prevent overflow */
-  margin-left: -50px !important; /* Adjust negative margin to match */
-  position: relative !important;
-  z-index: 1 !important; /* Ensure it appears behind the input field */
-  background-color: var(--urlbar-box-bgcolor) !important;
-}
-
-/* When URL bar is focused, update chicklet background */
-#urlbar[focused] #searchmode-switcher-chicklet {
-  background-color: var(--urlbar-box-focus-bgcolor) !important;
-}
-
-/* When in search mode, make the URL bar input field connect to the chicklet */
-#urlbar[searchmode] .urlbar-input-box {
-  border-radius: var(--border-radius) !important;
-  border: none !important;
-  margin-left: 0 !important; /* Remove any left margin */
-  position: relative !important;
-  z-index: 2 !important; /* Ensure it appears on top of the chicklet */
-}
-
-/* Also target the URL bar background when in search mode to ensure proper connection */
-#urlbar[searchmode] #urlbar-background {
-  border-radius: var(--border-radius) !important;
-  border: none !important;
-  position: relative !important;
-  z-index: 2 !important; /* Ensure it appears on top */
-  background-color: var(--search-bg-color) !important;
-}
-
-/* Ensure the URL bar itself has proper border radius when in search mode */
-#urlbar[searchmode] {
-  border-radius: var(--border-radius) !important;
-  border: none !important;
-  position: relative !important;
-  z-index: 2 !important; /* Ensure it appears on top */
-  background-color: var(--search-bg-color) !important;
-}
-
-/* Target the search mode switcher popup */
-#searchmode-switcher-popup {
-  border-radius: var(--border-radius) !important;
-  border: none !important;
-}
-
-/* Target the search mode switcher close button */
-#searchmode-switcher-close {
-  border-radius: var(--border-radius) !important;
-  border: none !important;
-}
-
-/* Target the search suggestions dropdown */
-
-.urlbarView-body-outer {
-  border-radius: var(--border-radius) !important;
-  border: none !important;
-  background-color: var(--search-bg-color) !important;
-  /* box-shadow: 0 2px 8px light-dark(rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.1)) !important; */
-}
-
-.urlbarView-results {
-  background-color: var(--search-bg-color) !important;
-}
-
-/* For site search dropdowns, remove right border radius to align with URL bar */
-.urlbarView[type="search"] .urlbarView-results,
-.urlbarView[type="search"] .urlbarView-body-outer,
-.urlbarView .urlbarView-results,
-.urlbarView .urlbarView-body-outer {
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-}
-
-/* Also target the main URL bar view container */
-.urlbarView {
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  background-color: var(--search-bg-color) !important;
-}
-
-/* Fix sidebar card top margin issues */
-/* Use padding with different values for different modes */
+/* ===== SIDEBAR STYLING ===== */
 #sidebar-box {
   padding-top: var(--space-small) !important;
   padding-right: 10px !important;
@@ -322,12 +283,12 @@
   margin-bottom: calc(var(--space-small) * 0.6) !important;
 }
 
-/* Add drop shadow to the sidebar browser element with rounded corners */
 #sidebar {
-  box-shadow: 0 6px 16px light-dark(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.06)) !important;
-  border: 1px solid light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2)) !important;
+  box-shadow: 0 6px 16px var(--sidebar-shadow) !important;
+  border: 1px solid var(--sidebar-border) !important;
 }
 
+/* ===== ANIMATIONS ===== */
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
