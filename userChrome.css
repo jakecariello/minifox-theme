@@ -8,6 +8,39 @@
   --sidebar-border: light-dark(rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12));
   --page-border-radius: 12px;
   --page-shadow: light-dark(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.25));
+  
+  /* Spacing */
+  --spacing-xs: 2px;
+  --spacing-sm: 4px;
+  --spacing-md: 8px;
+  --spacing-lg: 10px;
+  --spacing-xl: 12px;
+  --spacing-xxl: 16px;
+  
+  /* Z-index layers */
+  --z-index-base: 1;
+  --z-index-elevated: 2;
+  
+  /* Transitions */
+  --transition-duration: 0.3s;
+  --transition-timing: ease-out;
+  --animation-duration: 0.5s;
+  --animation-timing: ease-in;
+  
+  /* Opacity values */
+  --opacity-hidden: 0;
+  --opacity-visible: 1;
+  
+  /* Box shadow offsets */
+  --shadow-offset-x: -3px;
+  --shadow-offset-y: 0;
+  --shadow-blur: 10px;
+  
+  /* Search mode specific */
+  --search-switcher-min-width: 50px;
+  --search-chicklet-padding-left: 57px;
+  --search-chicklet-margin-left: -50px;
+  --search-chicklet-margin-right: 12px;
 }
 
 /* ===== URL BAR STYLING ===== */
@@ -53,18 +86,18 @@
 #urlbar-searchmode-switcher {
   border-radius: var(--border-radius) !important;
   border: none !important;
-  min-width: 50px !important;
-  padding-right: 8px !important;
+  min-width: var(--search-switcher-min-width) !important;
+  padding-right: var(--spacing-md) !important;
 }
 
 #searchmode-switcher-chicklet {
   border-radius: var(--border-radius) !important;
   border: none !important;
-  margin-right: 12 !important;
-  padding-left: 57px !important;
-  margin-left: -50px !important;
+  margin-right: var(--search-chicklet-margin-right) !important;
+  padding-left: var(--search-chicklet-padding-left) !important;
+  margin-left: var(--search-chicklet-margin-left) !important;
   position: relative !important;
-  z-index: 1 !important;
+  z-index: var(--z-index-base) !important;
   background-color: var(--urlbar-box-bgcolor) !important;
 }
 
@@ -77,14 +110,14 @@
   border: none !important;
   margin-left: 0 !important;
   position: relative !important;
-  z-index: 2 !important;
+  z-index: var(--z-index-elevated) !important;
 }
 
 #urlbar[searchmode] #urlbar-background {
   border-radius: var(--border-radius) !important;
   border: none !important;
   position: relative !important;
-  z-index: 2 !important;
+  z-index: var(--z-index-elevated) !important;
   background-color: var(--search-bg-color) !important;
 }
 
@@ -92,7 +125,7 @@
   border-radius: var(--border-radius) !important;
   border: none !important;
   position: relative !important;
-  z-index: 2 !important;
+  z-index: var(--z-index-elevated) !important;
   background-color: var(--search-bg-color) !important;
 }
 
@@ -130,11 +163,11 @@
 /* ===== BROWSER PAGE STYLING ===== */
 .browserContainer {
   border-radius: var(--page-border-radius) 0 0 var(--page-border-radius) !important;
-  box-shadow: -3px 0 10px var(--page-shadow), 0 -3px 10px var(--page-shadow), 0 3px 10px var(--page-shadow) !important;
+  box-shadow: var(--shadow-offset-x) var(--shadow-offset-y) var(--shadow-blur) var(--page-shadow), 0 var(--shadow-offset-x) var(--shadow-blur) var(--page-shadow), 0 3px var(--shadow-blur) var(--page-shadow) !important;
   overflow: hidden !important;
   position: relative !important;
-  z-index: 2 !important;
-  margin-left: -10px !important;
+  z-index: var(--z-index-elevated) !important;
+  margin-left: calc(-1 * var(--spacing-lg)) !important;
   background-color: var(--toolbox-bgcolor) !important;
 }
 
@@ -142,29 +175,29 @@
 #sidebar-box,
 #sidebar-main {
   /* width: calc(5em + 6px) !important; */
-  margin-right: 12px !important;
-  z-index: 1 !important;
+  margin-right: var(--spacing-xl) !important;
+  z-index: var(--z-index-base) !important;
   position: relative !important;
 }
 
 /* ===== AUTO-HIDE TOOLBARS ===== */
 #navigator-toolbox {
-  opacity: 0 !important;
-  transition: opacity 0.3s ease-out !important;
+  opacity: var(--opacity-hidden) !important;
+  transition: opacity var(--transition-duration) var(--transition-timing) !important;
 }
 
 #nav-bar,
 #urlbar-container,
 #urlbar,
 #search-container {
-  opacity: 0 !important;
-  transition: opacity 0.3s ease-out !important;
-  padding: 2px 2px !important;
+  opacity: var(--opacity-hidden) !important;
+  transition: opacity var(--transition-duration) var(--transition-timing) !important;
+  padding: var(--spacing-xs) var(--spacing-xs) !important;
 }
 
 #main-window #browser {
   transform: translateY(calc(-1 * var(--toolbar-height))) !important;
-  transition: transform 0.3s ease-out !important;
+  transition: transform var(--transition-duration) var(--transition-timing) !important;
   min-height: 100vh !important;
   height: 100vh !important;
 }
@@ -176,7 +209,7 @@
 #tabbrowser-tabs {
   min-height: 100% !important;
   height: 100% !important;
-  transition: height 0.3s ease-out !important;
+  transition: height var(--transition-duration) var(--transition-timing) !important;
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
@@ -184,7 +217,7 @@
 /* ===== HOVER/FOCUS STATES ===== */
 #navigator-toolbox:hover,
 #navigator-toolbox:focus-within {
-  opacity: 1 !important;
+  opacity: var(--opacity-visible) !important;
 }
 
 #navigator-toolbox:hover #nav-bar,
@@ -195,7 +228,7 @@
 #navigator-toolbox:focus-within #urlbar-container,
 #navigator-toolbox:focus-within #urlbar,
 #navigator-toolbox:focus-within #search-container {
-  opacity: 1 !important;
+  opacity: var(--opacity-visible) !important;
 }
 
 #navigator-toolbox:hover ~ #browser,
@@ -215,11 +248,11 @@
 #urlbar:focus ~ #nav-bar,
 #urlbar:focus ~ #urlbar-container,
 #urlbar:focus ~ #search-container {
-  opacity: 1 !important;
+  opacity: var(--opacity-visible) !important;
 }
 
 #urlbar:focus {
-  opacity: 1 !important;
+  opacity: var(--opacity-visible) !important;
 }
 
 #urlbar:focus ~ #browser {
@@ -235,7 +268,7 @@
 
 /* ===== FULLSCREEN MODE ===== */
 #main-window[inFullscreen] #navigator-toolbox {
-  opacity: 1 !important;
+  opacity: var(--opacity-visible) !important;
 }
 
 #main-window[inFullscreen] #browser {
@@ -253,13 +286,13 @@
 #main-window[inFullscreen] #urlbar-container,
 #main-window[inFullscreen] #urlbar,
 #main-window[inFullscreen] #search-container {
-  opacity: 1 !important;
+  opacity: var(--opacity-visible) !important;
 }
 
 /* ===== BOOKMARKS TOOLBAR ===== */
 #PersonalToolbar {
   visibility: collapse !important;
-  transition: visibility 0.3s ease-out !important;
+  transition: visibility var(--transition-duration) var(--transition-timing) !important;
   height: 0 !important;
 }
 
@@ -298,9 +331,9 @@
 /* ===== SIDEBAR STYLING ===== */
 #sidebar-box {
   padding-top: var(--space-small) !important;
-  padding-right: 10px !important;
-  padding-left: 4px !important;
-  animation: fadeIn 0.5s ease-in !important;
+  padding-right: var(--spacing-lg) !important;
+  padding-left: var(--spacing-sm) !important;
+  animation: fadeIn var(--animation-duration) var(--animation-timing) !important;
 }
 
 #sidebar-box > * {
@@ -308,7 +341,7 @@
 }
 
 #sidebar {
-  box-shadow: 0 6px 16px var(--sidebar-shadow) !important;
+  box-shadow: 0 6px var(--spacing-xxl) var(--sidebar-shadow) !important;
   border: 1px solid var(--sidebar-border) !important;
 }
 
