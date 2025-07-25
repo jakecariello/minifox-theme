@@ -155,6 +155,8 @@
   min-height: 100% !important;
   height: 100% !important;
   transition: height 0.3s ease-out !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 /* ===== HOVER/FOCUS STATES ===== */
@@ -177,8 +179,8 @@
 #navigator-toolbox:hover ~ #browser,
 #navigator-toolbox:focus-within ~ #browser {
   transform: translateY(0px) !important;
-  min-height: 100vh !important;
-  height: 100vh !important;
+  min-height: calc(100vh - var(--toolbar-height)) !important;
+  height: calc(100vh - var(--toolbar-height)) !important;
 }
 
 #navigator-toolbox:hover ~ #browser #tabbrowser-tabs,
@@ -200,8 +202,8 @@
 
 #urlbar:focus ~ #browser {
   transform: translateY(0px) !important;
-  min-height: 100vh !important;
-  height: 100vh !important;
+  min-height: calc(100vh - var(--toolbar-height)) !important;
+  height: calc(100vh - var(--toolbar-height)) !important;
 }
 
 #urlbar:focus ~ #browser #tabbrowser-tabs {
@@ -216,8 +218,8 @@
 
 #main-window[inFullscreen] #browser {
   transform: none !important;
-  min-height: 100vh !important;
-  height: 100vh !important;
+  min-height: calc(100vh - var(--toolbar-height)) !important;
+  height: calc(100vh - var(--toolbar-height)) !important;
 }
 
 #main-window[inFullscreen] #tabbrowser-tabs {
