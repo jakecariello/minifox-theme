@@ -11,6 +11,9 @@ A clean, distraction-free Firefox theme that automatically hides toolbars when n
 - **Custom tab icons**: Optimized tab icon sizing
 - **Sidebar enhancements**: Improved sidebar styling with shadows
 
+<img width="1071" height="853" alt="Screenshot 2025-07-25 at 16 11 45" src="https://github.com/user-attachments/assets/719d273b-88c3-4183-8e29-d0c86c390f5b" />
+<img width="1071" height="853" alt="Screenshot 2025-07-25 at 16 11 32" src="https://github.com/user-attachments/assets/ac9cc65f-6474-4d78-9358-11b20266cf6f" />
+
 ## Installation Instructions
 
 ### Step 1: Enable Custom Stylesheets
