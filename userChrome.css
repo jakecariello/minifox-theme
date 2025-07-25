@@ -4,8 +4,8 @@
   --tab-icon-size: 20px;
   --border-radius: 10px;
   --search-bg-color: light-dark(white, #1a1a1a);
-  --sidebar-shadow: light-dark(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.06));
-  --sidebar-border: light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2));
+  --sidebar-shadow: light-dark(rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.04));
+  --sidebar-border: light-dark(rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.12));
   --page-border-radius: 12px;
   --page-shadow: light-dark(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.25));
 }
