@@ -135,6 +135,7 @@
   position: relative !important;
   z-index: 2 !important;
   margin-left: -10px !important;
+  background-color: var(--toolbox-bgcolor) !important;
 }
 
 /* ===== VERTICAL TAB BAR OVERFLOW ===== */
