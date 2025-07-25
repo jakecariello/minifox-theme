@@ -6,6 +6,8 @@
   --search-bg-color: light-dark(white, #1a1a1a);
   --sidebar-shadow: light-dark(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.06));
   --sidebar-border: light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2));
+  --page-border-radius: 12px;
+  --page-shadow: light-dark(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.25));
 }
 
 /* ===== URL BAR STYLING ===== */
@@ -123,6 +125,25 @@
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   background-color: var(--search-bg-color) !important;
+}
+
+/* ===== BROWSER PAGE STYLING ===== */
+.browserContainer {
+  border-radius: var(--page-border-radius) 0 0 var(--page-border-radius) !important;
+  box-shadow: -3px 0 10px var(--page-shadow), 0 -3px 10px var(--page-shadow), 0 3px 10px var(--page-shadow) !important;
+  overflow: hidden !important;
+  position: relative !important;
+  z-index: 2 !important;
+  margin-left: -10px !important;
+}
+
+/* ===== VERTICAL TAB BAR OVERFLOW ===== */
+#sidebar-box,
+#sidebar-main {
+  /* width: calc(5em + 6px) !important; */
+  margin-right: 12px !important;
+  z-index: 1 !important;
+  position: relative !important;
 }
 
 /* ===== AUTO-HIDE TOOLBARS ===== */
