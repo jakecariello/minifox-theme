@@ -162,7 +162,7 @@
 
 /* ===== BROWSER PAGE STYLING ===== */
 .browserContainer {
-  border-radius: var(--page-border-radius) 0 0 var(--page-border-radius) !important;
+  border-radius: var(--page-border-radius) 0 0 0 !important;
   box-shadow: var(--shadow-offset-x) var(--shadow-offset-y) var(--shadow-blur) var(--page-shadow), 0 var(--shadow-offset-x) var(--shadow-blur) var(--page-shadow), 0 3px var(--shadow-blur) var(--page-shadow) !important;
   overflow: hidden !important;
   position: relative !important;
